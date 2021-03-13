@@ -100,6 +100,19 @@ class TagCrudController extends CrudController
 
 **Step 3. OPTIONAL - You can create a ```setupInlineCreateOperation()``` method in the EntityCrudController**, to make the InlineCreateOperation different to the CreateOperation, for example have more/less fields, or different fields. Check out the [Fields API](/docs/{{version}}/crud-fields#fields-api) for a reference of all you can do with them.
 
+**Step 4 - In order to Fetch in your CrudController, you need to:
+1. Use the ```FetchOperation``` trait;
+2. Add a ```fetchEntityName()``` method, that will respond to the AJAX requests (following this  naming convention);
+
+```php
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+
+    protected function fetchTag()
+    {
+        return $this->fetch(\App\Models\Tag::class);
+    }
+```
+
 <a name="how-it-works"></a>
 ## How It Works
 
